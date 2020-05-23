@@ -2,12 +2,10 @@ import React from 'react';
 import {
   Map, TileLayer, Marker, Popup,
 } from 'react-leaflet';
-import ReactDOM from 'react-dom';
 
 // const fetch = require('node-fetch');
 
 const ISS__API = 'http://api.open-notify.org/iss-now.json';
-
 
 class MapBase extends React.Component {
   constructor() {
@@ -41,9 +39,15 @@ class MapBase extends React.Component {
 
     return (
       <Map center={position} zoom={zoom}>
+        {ISS__API.data.map((ISS) => (
+          <Marker
+            key={ISS.objectID}
+            position={[ISS.iss_position.latitude, ISS.iss_position.longitude]}
+          />
+        ))}
         <TileLayer
-          attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> Contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
         <Marker position={position}>
           <Popup>The ISS&apos; location</Popup>
@@ -53,4 +57,6 @@ class MapBase extends React.Component {
   }
 }
 
-ReactDOM.render(<MapBase />, document.getElementById('mapid'));
+export default MapBase;
+
+// ReactDOM.render(<MapBase />, document.getElementById('mapid'));
