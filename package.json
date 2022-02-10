@@ -7,7 +7,7 @@
     "leaflet": "^1.6.0",
     "leaflet.offline": "^1.0.6",
     "node-fetch": "^2.6.0",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "parcel-bundler": "^1.12.4",
     "prettier": "^2.0.5",
     "react": "^16.13.1",
